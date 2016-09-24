@@ -6,7 +6,7 @@ import numpy as np
 chunk = 2048
 
 # open up a wave
-wf = wave.open('test-tones/440hz.wav', 'rb')
+wf = wave.open('africa-toto.wav', 'rb')
 swidth = wf.getsampwidth()
 RATE = wf.getframerate()
 # use a Blackman window
@@ -38,10 +38,10 @@ while len(data) == chunk*swidth:
         x1 = (y2 - y0) * .5 / (2 * y1 - y2 - y0)
         # find the frequency and output it
         thefreq = (which+x1)*RATE/chunk
-        print("The freq is %f Hz." % (thefreq))
+        print "The freq is %f Hz." % (thefreq)
     else:
         thefreq = which*RATE/chunk
-        print("The freq is %f Hz." % (thefreq))
+        print "The freq is %f Hz." % (thefreq)
     # read some more data
     data = wf.readframes(chunk)
 if data:
