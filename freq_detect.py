@@ -21,7 +21,7 @@ def pitch(freq):
 chunk = 2048
 
 # open up a wave
-wf = wave.open('africa-toto.wav', 'rb')
+wf = wave.open('darude.wav', 'rb')
 swidth = wf.getsampwidth()
 RATE = wf.getframerate()
 # use a Blackman window
@@ -52,11 +52,13 @@ while len(data) == chunk*swidth:
         y0,y1,y2 = np.log(fftData[which-1:which+2:])
         x1 = (y2 - y0) * .5 / (2 * y1 - y2 - y0)
         # find the frequency and output it
-        thefreq = int((which+x1)*RATE/chunk)
-        print("The freq is %s Hz." % pitch(thefreq))
+        thefreq = ((which+x1)*RATE/chunk)
+        print("The freq is %f Hz" % (thefreq))
+        print("The note is %s" % pitch(thefreq))
     else:
-        thefreq = int(which*RATE/chunk)
-        print("The freq is %s Hz." % pitch(thefreq))
+        thefreq = (which*RATE/chunk)
+        print("The freq is %s Hz." % (thefreq))
+        print("The note is %s" % pitch(thefreq))
     # read some more data
     data = wf.readframes(chunk)
 if data:
