@@ -38,10 +38,10 @@ while len(data) == chunk*swidth:
         x1 = (y2 - y0) * .5 / (2 * y1 - y2 - y0)
         # find the frequency and output it
         thefreq = (which+x1)*RATE/chunk
-        print "The freq is %f Hz." % (thefreq)
+        print("The freq is %f Hz." % (thefreq))
     else:
         thefreq = which*RATE/chunk
-        print "The freq is %f Hz." % (thefreq)
+        print("The freq is %f Hz." % (thefreq))
     # read some more data
     data = wf.readframes(chunk)
 if data:
